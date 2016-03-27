@@ -49,6 +49,7 @@ os.Remove(sc)
 }
 
 func main() {
+os.Mkdir("test", os.ModePerm)
 http.HandleFunc("/", upload)
     err := http.ListenAndServe(":8080", nil) // setting listening port
     if err != nil {

@@ -15,8 +15,7 @@ import (
 )
 type CONFIG struct {
 Port string
-Server string
-Lang string
+Url string
 }
 
 func upload(w http.ResponseWriter, r *http.Request) {
@@ -56,8 +55,23 @@ os.Remove(sc)
 
 func main() {
 os.Mkdir("test", os.ModePerm)
-http.HandleFunc("/", upload)
-    err := http.ListenAndServe(":8080", nil) // setting listening port
+file, err := os.Open("/etc/ircconfig.txt")
+ if err != nil {
+ log.Fatal(err)
+ }
+
+var all CONFIG
+
+ data, err := ioutil.ReadAll(file)
+ if err != nil {
+ log.Fatal(err)
+ }
+rede := json.Unmarshal(data, &all)
+    if rede != nil {
+ log.Fatal(rede)
+}
+http.HandleFunc(all.Url, upload)
+    err := http.ListenAndServe(all.Port, nil) // setting listening port
     if err != nil {
         log.Fatal("ListenAndServe: ", err)
     }

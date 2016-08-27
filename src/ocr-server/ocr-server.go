@@ -19,7 +19,6 @@ Server string
 Lang string
 }
 
-
 func upload(w http.ResponseWriter, r *http.Request) {
     if r.Method == "GET" {
         crutime := time.Now().Unix()
@@ -27,7 +26,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
         io.WriteString(h, strconv.FormatInt(crutime, 10))
         token := fmt.Sprintf("%x", h.Sum(nil))
 
-        t, _ := template.ParseFiles("upload.html")
+        t, _ := template.ParseFiles("/etc/ocrconfig/upload.htm")
         t.Execute(w, token)
     } else {
         r.ParseMultipartForm(32 << 20)

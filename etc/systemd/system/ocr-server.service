@@ -1,0 +1,9 @@
+[Unit]
+Description=OCR server
+After=network.target
+[Service]
+User=root
+WorkingDirectory=/bin
+ExecStart=/bin/ocr-server
+[Install]
+WantedBy=multi-user.target

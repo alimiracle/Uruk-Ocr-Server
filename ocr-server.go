@@ -1,6 +1,7 @@
 package main
 
 import (
+"encoding/json"
     "html/template"
     "log"
     "net/http"
@@ -12,6 +13,12 @@ import (
 "strconv"
     "github.com/otiai10/gosseract"
 )
+type CONFIG struct {
+Port string
+Server string
+Lang string
+}
+
 
 func upload(w http.ResponseWriter, r *http.Request) {
     if r.Method == "GET" {

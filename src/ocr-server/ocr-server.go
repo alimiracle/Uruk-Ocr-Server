@@ -9,11 +9,12 @@ import (
 "os"
 "time"
 "io"
+ "io/ioutil"
 "crypto/md5"
 "strconv"
     "github.com/otiai10/gosseract"
 )
-type CONFIG struct {
+type SERVER struct {
 Port string
 Url string
 }
@@ -55,12 +56,12 @@ os.Remove(sc)
 
 func main() {
 os.Mkdir("test", os.ModePerm)
-file, err := os.Open("/etc/ircconfig.txt")
+file, err := os.Open("/etc/ocrconfig/server.conf")
  if err != nil {
  log.Fatal(err)
  }
 
-var all CONFIG
+var all SERVER
 
  data, err := ioutil.ReadAll(file)
  if err != nil {
@@ -71,8 +72,8 @@ rede := json.Unmarshal(data, &all)
  log.Fatal(rede)
 }
 http.HandleFunc(all.Url, upload)
-    err := http.ListenAndServe(all.Port, nil) // setting listening port
-    if err != nil {
-        log.Fatal("ListenAndServe: ", err)
+    er := http.ListenAndServe(all.Port, nil) // setting listening port
+    if er != nil {
+        log.Fatal("ListenAndServe: ", er)
     }
 }

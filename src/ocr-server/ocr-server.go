@@ -1,3 +1,20 @@
+/*
+* irc log recorder
+* A Simple, small, powerful OCR web server
+* Copyright (c) 2016 ali abdul ghani <alimiracle@riseup.net>
+*    This Program is free software: you can redistribute it and/or modify
+*    it under the terms of the GNU  General Public License as published by
+*    the Free Software Foundation, either version 3 of the License, or
+*    (at your option) any later version.
+*    This Program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU General Public License for more details.
+*    You should have received a copy of the GNU General Public License
+*    along with this library.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
 package main
 
 import (
@@ -14,8 +31,7 @@ import (
 "strconv"
     "github.com/otiai10/gosseract"
 )
-type CONFIG struct {
-Tempfile string
+type LANGCONFIG struct {
 Lang string
 }
 type SERVER struct {
@@ -24,12 +40,12 @@ Url string
 }
 
 func upload(w http.ResponseWriter, r *http.Request) {
-file, err := os.Open("/etc/ocrconfig/server.conf")
+file, err := os.Open("/etc/ocrconfig/lang.conf")
  if err != nil {
  log.Fatal(err)
  }
 
-var all CONFIG
+var all LANGCONFIG
 
  data, err := ioutil.ReadAll(file)
  if err != nil {
@@ -66,7 +82,7 @@ rede := json.Unmarshal(data, &all)
 sc := "test/"+handler.Filename
     out := gosseract.Must(gosseract.Params{
             Src:       sc,
-            Languages: "eng",
+            Languages: all.lang,
     })
 
     fmt.Fprintf(w, out)

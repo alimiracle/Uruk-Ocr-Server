@@ -11,7 +11,7 @@
 *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 *    GNU General Public License for more details.
 *    You should have received a copy of the GNU General Public License
-*    along with this library.  If not, see <http://www.gnu.org/licenses/>.
+*    along with this Program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
@@ -40,14 +40,14 @@ Url string
 }
 
 func upload(w http.ResponseWriter, r *http.Request) {
-file, err := os.Open("/etc/ocrconfig/lang.conf")
+fileconf, err := os.Open("/etc/ocrconfig/lang.conf")
  if err != nil {
  log.Fatal(err)
  }
 
 var all LANGCONFIG
 
- data, err := ioutil.ReadAll(file)
+ data, err := ioutil.ReadAll(fileconf)
  if err != nil {
  log.Fatal(err)
  }
@@ -82,11 +82,13 @@ rede := json.Unmarshal(data, &all)
 sc := "test/"+handler.Filename
     out := gosseract.Must(gosseract.Params{
             Src:       sc,
-            Languages: all.lang,
+            Languages: all.Lang,
     })
 
     fmt.Fprintf(w, out)
 os.Remove(sc)
+fileconf.Close()
+
     }
 }
 

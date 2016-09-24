@@ -1,108 +1,76 @@
-irc log recorder is irc bot to  Watching Everything that happens in the irc channel 
-and record it in log.
+A Simple, small, powerful OCR web server
 
-and its have web server To enable users to access the logs from Web Browser and telnet.
+its use to Convert Image to text
 
-To install the program:
+to install it in your server
 
-1- you nede install golang to build it.
-
-Installing golang:
-
-In rpm distributions:
-
-You can quickly install golang on your os through the command line interface with:
-
-sudo dnf -y install golang
-
-Installing golang in deb distributions:
-
-You can quickly install golang on your os through the command line interface with:
-
-sudo apt-get install golang
-
-Installing golang in Arch distribution:
-
-You can quickly install golang on your os through the command line interface with:
-
-sudo pacman -S golang 
-
+1- you nede golang, leptonica-dev, tesseract-ocr, libtesseract-dev , gcc, g++ git
+ 
 2- Download the program from this link:
 
- https://notabug.org/alimiracle/irc-log-recorder
- 
+https://notabug.org/alimiracle/Uruk-Ocr-Server/releases 
 then extract it ( in home folder recomended ).
-
-or if you have git  run this command from terminal :
-
-git clone  https://notabug.org/alimiracle/irc-log-recorder
 
 then go to program folder by typing:
 
-  cd irc-log-recorder
+  cd ocr-server
   
 then type:
 
-chmod +x install
+chmod +x install.sh
 
-sudo ./install
+./install.sh as root
 
 to config the programme 
 
-open /etc/ircconfig.txt as root
+open /etc/ocrconfig/server.conf as root
 
-sudo nano /etc/ircconfig.txt
-
-replace urukbot with your bot web page
-
+sudo nano /etc/ocrconfig/server.conf
 replace http://myip.com/  with your server host
-
 if your host is local
-
 Type http://localhost/
-replace 8080 with your server port You want your bot listen to it
-
-replace myserver:444 with your irc server and port
-
-replace myname with your bot name
-
-replace myuser with your bot user name
-
-replace mypassword  with your bot password
-
-replace #emacs with your irc channel
+replace 8080 with your server port You want your irc server listen to it
 
 then save the file
 
-now you can run the bot 
+To add new language
+open /etc/ocrconfig/lang.conf
 
-type irl to run it
+nano /etc/ocrconfig/lang.conf
+and add the new language to the list
 
-and You can reach the log from http://yourip:8080
+for  example
+to add The Arabic language
+the config file  looks like
 
-replace yourip with your Computer IP
+{
+"Lang":"ar"
+}
 
-and if you have good Internet 
+and you can add More than language
 
-you can make all the world se the log by link your ip with domain 
+for  example
 
-Trouble: 
+to add English and Arabic
 
-All efforts have been made to ensure the smooth and correct running of this application. 
+the config file  looks like
 
-If you find that irc log recorder is behaving abnormaly though, there are 3 options : 
+{
+"Lang":"eng ar"
+}
 
-1) Turn it off and run away. Not an option I would advise. 
+to run the program
 
-2) Write a harsh comment that says how this app is a pile of **** and you can't believe I 
+type:
 
-even dared to waste your time.. Again, not a great option, but it does make me laugh when I 
-read some of the stuff.. :-) 
+sudo /bin/ocr-server
 
-3) Send me a short email with error type and any other 
+And if you want to run it as  service
 
-information you think is relevant, and I'll fix it. Jackpot. 
+type:
+systemctl enable ocr-server
 
-When I find a bug, I crush it. If I don't find it, and you do, and don't tell me, it lives and we all 
-lose.. I'm not a mind-reader. Or a Computer-reader. I'm not one of the X-Men. 
-i'm alimiracle
+
+have fun and be free
+
+ali miracle

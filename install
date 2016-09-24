@@ -1,8 +1,0 @@
-#!/bin/sh
-mkdir bin
-mkdir pkg
-export GOPATH=`pwd`
-go get github.com/thoj/go-ircevent
-go install ilr
-cp -R bin /usr
-cp -R etc /usr

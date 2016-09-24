@@ -50,6 +50,7 @@ sudo ./install
 to config the programme 
 
 open /etc/ircconfig.txt as root
+
 sudo nano /etc/ircconfig.txt
 
 replace urukbot with your bot web page
@@ -82,6 +83,7 @@ and You can reach the log from http://yourip:8080
 replace yourip with your Computer IP
 
 and if you have good Internet 
+
 you can make all the world se the log by link your ip with domain 
 
 Trouble: 

@@ -1,8 +1,10 @@
 irc log recorder is irc bot to  Watching Everything that happens in the irc channel 
 and record it in log.
+
 and its have web server To enable users to access the logs from Web Browser and telnet.
 
 To install the program:
+
 1- you nede install golang to build it.
 
 Installing golang:
@@ -49,11 +51,13 @@ to config the programme 
 
 open /etc/ircconfig.txt as root
 sudo nano /etc/ircconfig.txt
+
 replace urukbot with your bot web page
 
 replace http://myip.com/  with your server host
 
 if your host is local
+
 Type http://localhost/
 replace 8080 with your server port You want your bot listen to it
 
@@ -74,6 +78,7 @@ now you can run the bot
 type irl to run it
 
 and You can reach the log from http://yourip:8080
+
 replace yourip with your Computer IP
 
 and if you have good Internet 
@@ -88,10 +93,12 @@ If you find that irc log recorder is behaving abnormaly though, there are 3 opti
 1) Turn it off and run away. Not an option I would advise. 
 
 2) Write a harsh comment that says how this app is a pile of **** and you can't believe I 
+
 even dared to waste your time.. Again, not a great option, but it does make me laugh when I 
 read some of the stuff.. :-) 
 
 3) Send me a short email with error type and any other 
+
 information you think is relevant, and I'll fix it. Jackpot. 
 
 When I find a bug, I crush it. If I don't find it, and you do, and don't tell me, it lives and we all 

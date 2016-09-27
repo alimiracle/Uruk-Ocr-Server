@@ -1,5 +1,5 @@
 /*
-* irc log recorder
+* uruk ocr server
 * A Simple, small, powerful OCR web server
 * Copyright (c) 2016 ali abdul ghani <alimiracle@riseup.net>
 *    This Program is free software: you can redistribute it and/or modify
